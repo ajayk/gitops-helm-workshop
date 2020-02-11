@@ -10,10 +10,17 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: nginx-ingress
-    version: 1.25.0
+    version: 1.30.1
   values:
     controller:
+      image:
+      repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
+      tag: 0.28.0
       service:
-        type: LoadBalancer
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: nlb
+        # add the Necessary tags below , its a single key and multiple value K,V 
+        service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "fe_common.cost_center=platf_soar,fe_common.env_type=dev,fe_common.env=dev,fe_common.product=copss"
       metrics:
         enabled: false
+
