@@ -12,6 +12,8 @@ spec:
     name: drone
     version: 2.6.1
   values:
+      persistence:
+        enabled: false
       ingress:
         enabled: true
 
