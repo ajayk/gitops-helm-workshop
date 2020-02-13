@@ -6,11 +6,11 @@ metadata:
   annotations:
     fluxcd.io/ignore: "false"
 spec:
-  releaseName: drone
+  releaseName: drone1
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: drone
-    version: 2.6.0
+    version: 2.6.1
   values:
       ingress:
         enabled: true
