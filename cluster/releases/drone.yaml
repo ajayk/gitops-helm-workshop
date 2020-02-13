@@ -1,8 +1,8 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: nginx-ingress
-  namespace: ingress-nginx
+  name: drone
+  namespace: drone
   annotations:
     fluxcd.io/ignore: "false"
 spec:
