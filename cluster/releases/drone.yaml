@@ -1,0 +1,48 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: ingress-nginx
+  annotations:
+    fluxcd.io/ignore: "false"
+spec:
+  releaseName: drone
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: drone
+    version: 2.6.1
+  values:
+      ingress:
+        enabled: true
+
+        ## Drone Ingress annotations for cert-manager and nginx
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          kubernetes.io/tls-acme: "true"
+
+        ## Drone hostnames must be provided if Ingress is enabled
+        hosts:
+          - drone-ci.fetesting.com
+
+        tls:
+          - secretName: drone-tls
+            hosts:
+              - drone-ci.fetesting.com
+        # tls:
+        #   - secretName: drone-tls
+        #     hosts:
+        #       - drone.domain.io
+      service:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: drone-ci.fetesting.com
+
+      server:
+        # This is the url that you'd like to reach drone at. It must match the url provided to the github oauth app
+        host: "https://drone-ci.fetesting.com"
+        env:
+          DRONE_PROVIDER: "github"
+          DRONE_OPEN: "false"
+          DRONE_GITHUB: "true"
+          DRONE_ADMIN: "github_username"
+          DRONE_GITHUB_CLIENT: "github oauth app client id"
+          DRONE_GITHUB_SECRET: "github oauth app secret"
