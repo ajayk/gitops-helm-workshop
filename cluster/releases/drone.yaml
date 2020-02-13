@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: drone
-    version: 2.6.1
+    version: 2.6.0
   values:
       ingress:
         enabled: true
