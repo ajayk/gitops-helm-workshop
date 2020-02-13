@@ -45,6 +45,6 @@ spec:
           DRONE_PROVIDER: "github"
           DRONE_OPEN: "false"
           DRONE_GITHUB: "true"
-          DRONE_ADMIN: "github_username"
+          DRONE_ADMIN: "github_username1"
           DRONE_GITHUB_CLIENT: "github oauth app client id"
           DRONE_GITHUB_SECRET: "github oauth app secret"
