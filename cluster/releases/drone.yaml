@@ -1,7 +1,7 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: drone1
+  name: drone2
   namespace: drone
   annotations:
     fluxcd.io/ignore: "false"
